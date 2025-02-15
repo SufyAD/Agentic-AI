@@ -39,15 +39,17 @@ def get_response_from_ai_agent(llm_id, query, allow_search, system_prompt, provi
     return ai_messages[-1]
 
 
-def test_ai_agent():
-    llm_id = "gemini-1.5-flash"  # Example model
-    query = [HumanMessage(content="What is the capital of Pakistan?")]
-    allow_search = False
-    system_prompt = "Answer concisely."
-    provider = "Google-Gemini"
-    
-    response = get_response_from_ai_agent(llm_id, query, allow_search, system_prompt, provider)
-    print("AI Response:", response)
+#### Testing the Agent
 
-# Run the test
-test_ai_agent()
+# def test_ai_agent():
+#     llm_id = "gemini-1.5-flash"  # Example model
+#     query = [HumanMessage(content="What is the capital of Pakistan?")]
+#     allow_search = False
+#     system_prompt = "Answer concisely."
+#     provider = "Google-Gemini"
+    
+#     response = get_response_from_ai_agent(llm_id, query, allow_search, system_prompt, provider)
+#     print("AI Response:", response)
+
+# # Run the test
+# test_ai_agent()
