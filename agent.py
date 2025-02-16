@@ -22,7 +22,7 @@ from langchain_core.messages import AIMessage, HumanMessage, ToolMessage
 def get_response_from_ai_agent(llm_id, query, allow_search, system_prompt, provider):
     if provider=="Groq":
         llm=ChatGroq(model=llm_id)
-    elif provider=="Google-Gemini":
+    elif provider=="Google":
         llm=ChatGoogleGenerativeAI(model=llm_id, api_key=GEMINI_API_KEY)
 
     tools=[TavilySearchResults(max_results=2)] if allow_search else []
