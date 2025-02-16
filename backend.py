@@ -3,6 +3,9 @@ from typing import List
 from langchain_core.messages import AIMessage, HumanMessage
 from agent import get_response_from_ai_agent
 import uvicorn
+from fastapi import FastAPI, HTTPException
+
+ALLOWED_MODEL_NAMES=["llama3-70b-8192", "mixtral-8x7b-32768", "llama-3.3-70b-versatile", "gemini-1.5-flash"]
 
 # Step 1: Create schema for validation
 class RequestState(BaseModel):
@@ -13,11 +16,9 @@ class RequestState(BaseModel):
     allow_search: bool
     
 #Step 2: Fast API end points
-from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="Personal AI Agent by Sufyan Ahmed")
-
-ALLOWED_MODEL_NAMES=["llama3-70b-8192", "mixtral-8x7b-32768", "llama-3.3-70b-versatile", "gemini-1.5-flash"]
 
 @app.post("/chat")
 async def generate_response(request: RequestState):
@@ -27,7 +28,7 @@ async def generate_response(request: RequestState):
     """
     
     if request.model_name not in ALLOWED_MODEL_NAMES:
-        return {"error": "AI model not defined"}
+        raise HTTPException(status_code=400, detail="Invalid AI model specified")
     
     query = [HumanMessage(content=msg) for msg in request.messages]
     llm_id = request.model_name
@@ -41,5 +42,5 @@ async def generate_response(request: RequestState):
     
     
 if __name__ == "__main__":
-    uvicorn.run("backend:app", host="127.0.0.1", port=9999, reload=True)
+    uvicorn.run("backend:app", host="127.0.0.1", port=8000, reload=True)
 
