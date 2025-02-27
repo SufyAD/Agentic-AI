@@ -1,0 +1,9 @@
+
+
+generate_poem:
+  description: >
+    Write down a heart touching 3-4 lines poem on this given topic: {topic}
+  expected_output: >
+    A heart touching poem on {topic}
+  agent: poem_generator
+  output_file: poem.log

@@ -1,0 +1,21 @@
+[project]
+name = "poem-flow"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Sufyan Ahmed", email = "muhammadsufyan20@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "crewai>=0.102.0",
+    "crewai-tools>=0.36.0",
+    "python-dotenv>=1.0.1",
+]
+
+[project.scripts]
+poem-flow = "poem_flow.main:kickoff"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
