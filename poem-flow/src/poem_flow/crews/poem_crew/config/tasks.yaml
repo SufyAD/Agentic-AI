@@ -1,9 +1,6 @@
-
-
 generate_poem:
   description: >
-    Write down a heart touching 3-4 lines poem on this given topic: {topic}
+    Write a poem about {topic}. Ensure the poem is engaging and adheres to the specified sentence count of {sentence_count}.
   expected_output: >
-    A heart touching poem on {topic}
+    A heart touching poem on {topic} with sentence count provided by the user {sentence_count}
   agent: poem_generator
-  output_file: poem.log
